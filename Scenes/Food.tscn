@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/food.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Consumable.cs" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 22.49
+
+[node name="Food" type="RigidBody2D" groups=["Consumables", "Food"]]
+collision_layer = 2
+collision_mask = 6
+mass = 0.1
+gravity_scale = 0.0
+linear_velocity = Vector2( 10, 0 )
+linear_damp = 0.0
+script = ExtResource( 2 )
+Dna = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Consumables", "Food"]]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="." groups=["Consumables", "Food"]]
+texture = ExtResource( 1 )

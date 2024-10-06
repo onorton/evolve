@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/DNA.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Upgrade.cs" type="Script" id=2]
+
+[node name="Upgrade" type="PanelContainer"]
+margin_top = 48.0
+margin_right = 186.0
+margin_bottom = 140.0
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": "
+
+"
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 179.0
+margin_bottom = 87.0
+custom_constants/separation = 5
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
+margin_right = 172.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 10 )
+meta_underlined = false
+text = "Flagellum"
+fit_content_height = true
+scroll_active = false
+
+[node name="Description" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 20.0
+margin_right = 172.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 10 )
+meta_underlined = false
+text = "The cell can move faster. Consumes more genergy."
+fit_content_height = true
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 55.0
+margin_right = 172.0
+margin_bottom = 80.0
+alignment = 2
+
+[node name="Price" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 83.0
+margin_top = 5.0
+margin_right = 103.0
+margin_bottom = 19.0
+text = "50 "
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_left = 107.0
+margin_right = 132.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 25, 25 )
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Buy" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 136.0
+margin_right = 172.0
+margin_bottom = 25.0
+text = "Buy"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Buy" to="." method="OnPurchase"]

@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Upgrade.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Editor.cs" type="Script" id=2]
+
+[node name="Editor" type="Control"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+script = ExtResource( 2 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -55.0
+margin_right = 100.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 193.0
+margin_bottom = 340.0
+
+[node name="Message" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+margin_right = 186.0
+margin_bottom = 15.0
+bbcode_enabled = true
+bbcode_text = "You are able to evolve!"
+text = "You are able to evolve!"
+fit_content_height = true
+
+[node name="Upgrades" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 19.0
+margin_right = 186.0
+margin_bottom = 309.0
+alignment = 1
+
+[node name="Flagellum" parent="PanelContainer/VBoxContainer/Upgrades" instance=ExtResource( 1 )]
+margin_top = 0.0
+margin_bottom = 94.0
+_price = 100
+_name = "Flagellum"
+_description = "The cell can move faster. Consumes more energy."
+
+[node name="Flagellum2" parent="PanelContainer/VBoxContainer/Upgrades" instance=ExtResource( 1 )]
+margin_top = 98.0
+margin_bottom = 192.0
+_price = 100
+_name = "Spike"
+_description = "An additional spike"
+
+[node name="Flagellum3" parent="PanelContainer/VBoxContainer/Upgrades" instance=ExtResource( 1 )]
+margin_top = 196.0
+margin_bottom = 290.0
+_price = 200
+_name = "Chloroplasts"
+_description = "Passively produce energy"
+
+[node name="Continue" type="Button" parent="PanelContainer/VBoxContainer"]
+margin_left = 58.0
+margin_top = 313.0
+margin_right = 127.0
+margin_bottom = 333.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "Continue"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Continue" to="." method="OnContinue"]
