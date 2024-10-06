@@ -79,6 +79,11 @@ public class SoundManager : Node
         _soundEffectPlayer.Play();
     }
 
+    public void OnMuteToggle(bool mute)
+    {
+        AudioServer.SetBusMute(AudioServer.GetBusIndex("Master"), mute);
+    }
+
 
 
 }
