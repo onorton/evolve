@@ -56,10 +56,9 @@ public class SoundManager : Node
     public void OnCombatStart()
     {
         var tween = GetTree().CreateTween();
-        _combatMusic.Play();
         tween.SetParallel();
-        tween.TweenProperty(_mainMusic, "volume_db", -80.0f, 5.0f);
-        tween.TweenProperty(_combatMusic, "volume_db", 0.0f, 5.0f);
+        tween.TweenProperty(_mainMusic, "volume_db", -80.0f, 3.0f);
+        tween.TweenProperty(_combatMusic, "volume_db", 0.0f, 3.0f);
         tween.Play();
 
     }

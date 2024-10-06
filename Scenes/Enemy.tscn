@@ -10,8 +10,9 @@ extents = Vector2( 50, 50 )
 
 [node name="Enemy" type="KinematicBody2D" groups=["Enemies"]]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 script = ExtResource( 1 )
+_health = 50.0
 
 [node name="Sprite" type="Sprite" parent="." groups=["Enemies"]]
 material = ExtResource( 2 )

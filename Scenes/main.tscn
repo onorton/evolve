@@ -48,8 +48,8 @@ _objectToSpawn = ExtResource( 17 )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 1 )]
 _minDistance = 500.0
-_spawnFrequency = 5.0
-_initialNumber = 20.0
+_spawnFrequency = 20.0
+_initialNumber = 10.0
 _objectToSpawn = ExtResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -71,6 +71,7 @@ panning_strength = 0.0
 
 [node name="CombatMusic" type="AudioStreamPlayer2D" parent="Camera2D/SoundManager"]
 stream = ExtResource( 10 )
+autoplay = true
 max_distance = 9.22337e+18
 attenuation = 0.000730702
 panning_strength = 0.0

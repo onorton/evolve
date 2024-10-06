@@ -21,16 +21,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = -55.0
+margin_top = -173.5
 margin_right = 100.0
-margin_bottom = 55.0
+margin_bottom = 173.5
 rect_min_size = Vector2( 200, 0 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 193.0
-margin_bottom = 340.0
+margin_bottom = 438.0
 
 [node name="Message" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
 margin_right = 186.0
@@ -43,7 +43,7 @@ fit_content_height = true
 [node name="Upgrades" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
 margin_top = 19.0
 margin_right = 186.0
-margin_bottom = 309.0
+margin_bottom = 407.0
 alignment = 1
 
 [node name="Flagellum" parent="PanelContainer/VBoxContainer/Upgrades" instance=ExtResource( 1 )]
@@ -60,18 +60,25 @@ _price = 100
 _name = "Spike"
 _description = "An additional spike"
 
-[node name="Flagellum3" parent="PanelContainer/VBoxContainer/Upgrades" instance=ExtResource( 1 )]
+[node name="Flagellum4" parent="PanelContainer/VBoxContainer/Upgrades" instance=ExtResource( 1 )]
 margin_top = 196.0
 margin_bottom = 290.0
+_price = 100
+_name = "Spike"
+_description = "An additional spike"
+
+[node name="Flagellum3" parent="PanelContainer/VBoxContainer/Upgrades" instance=ExtResource( 1 )]
+margin_top = 294.0
+margin_bottom = 388.0
 _price = 200
 _name = "Chloroplasts"
 _description = "Passively produce energy"
 
 [node name="Continue" type="Button" parent="PanelContainer/VBoxContainer"]
 margin_left = 58.0
-margin_top = 313.0
+margin_top = 411.0
 margin_right = 127.0
-margin_bottom = 333.0
+margin_bottom = 431.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 text = "Continue"

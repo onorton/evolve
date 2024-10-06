@@ -20,11 +20,13 @@ public class Player : KinematicBody2D
     private PackedScene _dnaScene = GD.Load<PackedScene>("res://Scenes/DNA.tscn");
 
 
+    private int _spikes = 0;
+
     private float _health;
     private float _maxHealth = 100;
     private float _energy = 100;
     private float _maxEnergy = 100;
-    private float _speed = 100;
+    private float _speed = 120;
 
     private float _acquiredDnaCurrentGeneration = 0.0f;
     private float _dnaForAGeneration = 100.0f;
@@ -37,6 +39,8 @@ public class Player : KinematicBody2D
     private float _turnSpeed = 3f;
 
     private Timer _immunityTimer;
+    private Timer _attackTimer;
+
     private bool _immune;
 
     private Vector2 _direction = Vector2.Up;
@@ -46,17 +50,21 @@ public class Player : KinematicBody2D
 
     private bool _moving = false;
 
-    private float _baseEnergyConsumptionRate = 2.0f;
+    private float _baseEnergyConsumptionRate = 1.5f;
 
     private float _baseEnergyProductionRate = 0.0f;
     private float _movementEnergyConsumptionRate = 5.0f;
 
     private int _generations = 0;
 
+
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         _immunityTimer = GetNode<Timer>("Immunity");
+        _attackTimer = GetNode<Timer>("Attack");
+
         _immune = false;
         _health = _maxHealth;
         _camera = GetNode<Camera2D>("/root/Root/Camera2D");
@@ -240,6 +248,17 @@ public class Player : KinematicBody2D
                     EmitSignal(nameof(EnergyUpdateEventHandler), _energy, _maxEnergy);
                     body.QueueFree();
                 }
+
+                if (body.IsInGroup("Enemies"))
+                {
+                    if (_attackTimer.TimeLeft == 0.0f)
+                    {
+                        GetNode<SoundManager>("/root/Root/Camera2D/SoundManager").OnPlaySoundEffect("slash");
+                        (body as Enemy).TakeDamage(2.0f);
+                        _attackTimer.Start();
+                    }
+
+                }
             }
         }
     }
@@ -282,12 +301,24 @@ public class Player : KinematicBody2D
             case "Spike":
                 {
                     GD.Print(GetNode("Spike").GetType());
-                    GetNode<Weapon>("Spike").Visible = false;
-                    GetNode<CollisionPolygon2D>("Spike/Spike").Disabled = true;
-                    GetNode<Weapon>("SecondSpike").Visible = true;
-                    GetNode<CollisionPolygon2D>("SecondSpike/Spike").Disabled = false;
-                    GetNode<Weapon>("ThirdSpike").Visible = true;
-                    GetNode<CollisionPolygon2D>("ThirdSpike/Spike").Disabled = false;
+
+                    if (_spikes == 0)
+                    {
+                        GetNode<Weapon>("Spike").Visible = true;
+                        GetNode<CollisionPolygon2D>("Spike/Spike").Disabled = false;
+                        _spikes = 1;
+                    }
+                    else
+                    {
+                        GetNode<Weapon>("Spike").Visible = false;
+                        GetNode<CollisionPolygon2D>("Spike/Spike").Disabled = true;
+                        GetNode<Weapon>("SecondSpike").Visible = true;
+                        GetNode<CollisionPolygon2D>("SecondSpike/Spike").Disabled = false;
+                        GetNode<Weapon>("ThirdSpike").Visible = true;
+                        GetNode<CollisionPolygon2D>("ThirdSpike/Spike").Disabled = false;
+
+                    }
+
 
                     _maxHealth += 20;
 
