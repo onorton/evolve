@@ -38,17 +38,18 @@ material = SubResource( 2 )
 position = Vector2( 314, 264 )
 
 [node name="FoodSpawner" parent="." instance=ExtResource( 1 )]
-_initialNumber = 500.0
+_spawnFrequency = 1.0
+_initialNumber = 1000.0
 
 [node name="HerbivoreSpawner" parent="." instance=ExtResource( 1 )]
-_minDistance = 500.0
 _spawnFrequency = 5.0
-_initialNumber = 40.0
+_initialNumber = 50.0
 _objectToSpawn = ExtResource( 17 )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 1 )]
-_minDistance = 500.0
-_spawnFrequency = 20.0
+_maxDistance = 3000.0
+_minDistance = 1000.0
+_spawnFrequency = 30.0
 _initialNumber = 10.0
 _objectToSpawn = ExtResource( 7 )
 
